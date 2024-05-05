@@ -44,3 +44,6 @@ Invoke-WebRequest "https://github.com/retrage/edk2-nightly/raw/master/bin/DEBUGX
 Invoke-WebRequest "https://github.com/retrage/edk2-nightly/raw/master/bin/RELEASEX64_OVMF_CODE.fd" -Outfile .\Latest\x64\Release\OVMF_CODE.fd
 Invoke-WebRequest "https://github.com/retrage/edk2-nightly/raw/master/bin/RELEASEX64_OVMF_VARS.fd" -Outfile .\Latest\x64\Release\OVMF_VARS.fd
 
+git add *
+git commit
+git push
