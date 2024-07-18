@@ -5,9 +5,15 @@ $date = Get-Date;
 $Yesterday = $date.AddDays(-1);
 $YesterdayStr = $Yesterday.ToString($folderNameDateFormat);
 
+
+
 if(!(Test-Path -Path ".\$YesterdayStr"))
 {
-    Move-Item -Path .\Latest -Destination ".\$YesterdayStr";
+    
+    if(Test-Path -Path .\Latest)
+    {
+        Move-Item -Path .\Latest -Destination ".\$YesterdayStr";
+    }
 
     mkdir .\Latest\
     mkdir .\Latest\ARM
@@ -42,7 +48,6 @@ if(!(Test-Path -Path ".\$YesterdayStr"))
     Invoke-WebRequest "https://github.com/retrage/edk2-nightly/raw/master/bin/DEBUGX64_OVMF_VARS.fd" -Outfile .\Latest\x64\Debug\OVMF_VARS.fd
     Invoke-WebRequest "https://github.com/retrage/edk2-nightly/raw/master/bin/RELEASEX64_OVMF_CODE.fd" -Outfile .\Latest\x64\Release\OVMF_CODE.fd
     Invoke-WebRequest "https://github.com/retrage/edk2-nightly/raw/master/bin/RELEASEX64_OVMF_VARS.fd" -Outfile .\Latest\x64\Release\OVMF_VARS.fd
-    return;
 };
 
 # Get all folders, attempt to parse their names as dates, and sort them by date descending
