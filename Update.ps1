@@ -5,8 +5,6 @@ $date = Get-Date;
 $Yesterday = $date.AddDays(-1);
 $YesterdayStr = $Yesterday.ToString($folderNameDateFormat);
 
-
-
 if(!(Test-Path -Path ".\$YesterdayStr"))
 {
     
